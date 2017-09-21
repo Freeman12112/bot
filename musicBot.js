@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const music = require('discord.js-music-v11');
-const Bot = new Discord.Client();
+const client = new Discord.Client();
 const token = "<auth_token>" // Recommended to load from json file.
 
-Bot.on('ready', () => {
-    console.log(`[Start] ${new Date()}`);
+client.on('ready', () => {
+    console.log('I am ready!');
 });
 
 music(Bot, {
@@ -14,4 +14,6 @@ music(Bot, {
 	clearInvoker: true, // If permissions applicable, allow the bot to delete the messages that invoke it (start with prefix)
     channel: 'music'   // Name of voice channel to join. If omitted, will instead join user's voice channel.
 });
-Bot.login(token);
+
+// THIS  MUST  BE  THIS  WAY
+client.login(process.env.BOT_TOKEN);
